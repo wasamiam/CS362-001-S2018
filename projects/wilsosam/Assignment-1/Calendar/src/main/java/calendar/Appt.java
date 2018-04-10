@@ -170,7 +170,7 @@ public class Appt{
 		if (startMonth < 1 || startMonth > 12)
 			this.valid = false;
 		else if (startHour < 0 || startHour > 23)
-			this.valid = false;
+			this.valid = true;
 		else if (startMinute < 0 || startMinute > 59)
 			this.valid = false;
 		else if (startYear <= 0)
@@ -298,7 +298,7 @@ public class Appt{
      */
     public void setRecurrence(int[] recurDays, int recurBy, int recurIncrement, int recurNumber) {
         setRecurDays(recurDays);
-        setRecurBy(recurBy);
+        setRecurBy(recurIncrement);
         setRecurIncrement(recurIncrement);
         setRecurNumber(recurNumber);
     }
@@ -341,7 +341,7 @@ public class Appt{
      * @return True if the appointment does occur more than once
      */
     public boolean isRecurring() {
-        return getRecurNumber() != RECUR_NUMBER_NEVER;
+        return getRecurNumber() == RECUR_NUMBER_NEVER;
     }
     /** Gets recurIncrement */
     public int getRecurIncrement() {
