@@ -23,34 +23,96 @@ public class ApptTest  {
   }
 @Test(timeout = 4000)
  public void test01()  throws Throwable  {
-    Appt appt1 = new Appt(0,0,0,0,0,null,null,null);
-    appt1.setValid();
-    assertFalse(appt1.getValid());
-    appt1.setStartMonth(9);
-    assertEquals(appt1.getStartMonth(), 9);
-    appt1.setValid();
-    assertFalse(appt1.getValid());
 
-    appt1.setStartHour(15);
-    assertEquals(appt1.getStartHour(), 15);
-    appt1.setValid();
-    assertFalse(appt1.getValid());
 
-    appt1.setStartMinute(30);
-    assertEquals(appt1.getStartMinute(), 30);
-    appt1.setValid();
-    assertFalse(appt1.getValid());
+    // Test Constructor
+    /*
+    public Appt(int startHour, int startMinute,
+            int startDay, int startMonth, int startYear,
+             String title, String description, String emailAddress )
+     */
+    Appt appt2 = new Appt(1,1,1,1,1,"Test","Test2","Test@test.com");
+    assertEquals(appt2.getStartHour(),1);
+    assertEquals(appt2.getStartMinute(),1);
+    assertEquals(appt2.getStartDay(),1);
+    assertEquals(appt2.getStartMonth(),1);
+    assertEquals(appt2.getStartYear(),1);
+    assertEquals(appt2.getTitle(),"Test");
+    assertEquals(appt2.getDescription(),"Test2");
+    assertEquals(appt2.getEmailAddress(),"Test@test.com");
 
-    appt1.setStartYear(2018);
-    assertEquals(appt1.getStartYear(), 2018);
-    appt1.setValid();
-    assertFalse(appt1.getValid());
+    // Test setValid
 
-    appt1.setStartDay(14);
-    assertEquals(appt1.getStartDay(), 14);
+    Appt appt1 = new Appt(0,0,1,1,1,"Title","Desc","Email");
     appt1.setValid();
-
     assertTrue(appt1.getValid());
+    // Month
+    appt1.setStartMonth(0);
+    assertEquals(appt1.getStartMonth(), 0);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartMonth(13);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartMonth(6); // Reset
+    appt1.setValid();
+    assertTrue(appt1.getValid());
+
+    // Hour
+    appt1.setStartHour(-1);
+    assertEquals(appt1.getStartHour(), -1);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartHour(24);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartHour(0); // Reset
+
+    // Minute
+    appt1.setStartMinute(-1);
+    assertEquals(appt1.getStartMinute(), -1);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartMinute(60);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartMinute(0);
+
+    // Year
+    appt1.setStartYear(-1);
+    assertEquals(appt1.getStartYear(), -1);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartYear(1); // Reset
+
+    // Day
+    appt1.setStartDay(-1);
+    assertEquals(appt1.getStartDay(), -1);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+    appt1.setStartDay(32);
+    appt1.setValid();
+    assertFalse(appt1.getValid());
+
+    // hasTimeSet
+    assertTrue(appt1.hasTimeSet());
+    appt1.setStartHour(-1);
+    assertFalse(appt1.hasTimeSet());
+    appt1.setStartHour(0); // Reset
+
+    // setRecurrence
+    /*
+        public void setRecurrence(int[] recurDays, int recurBy, int recurIncrement, int recurNumber)
+     */
+    int[] testInt = {1,2,3};
+    appt1.setRecurrence(testInt, 1, 2, 3);
+    assertEquals(appt1.getRecurDays(),testInt);
+    assertEquals(appt1.getRecurBy(),1);
+    assertEquals(appt1.getRecurIncrement(),2);
+    assertEquals(appt1.getRecurNumber(),3);
+
+
+
 }
 
 }
