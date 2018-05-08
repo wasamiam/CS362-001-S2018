@@ -19,6 +19,10 @@ public class ApptTest  {
       appt0.setValid();
       assertFalse(appt0.getValid());
       assertTrue(appt0.isOn(9,14,2018));
+      appt0.setStartHour(1);
+      string0 = appt0.toString();
+      assertEquals("\t14/9/2018 at 1:30am ,Birthday Party, This is my birthday party\n", string0);
+
 
   }
 @Test(timeout = 4000)
