@@ -18,18 +18,18 @@ public class DataHandlerTest{
 
   @Test(timeout = 4000)
   public void test00()  throws Throwable  {
-    DataHandler dh1 = new DataHandler();
-    //assertTrue(dh1.fileName!=null);
-    assertTrue(dh1.save());
+    //DataHandler dh1 = new DataHandler();
+      //assertTrue(dh1.fileName!=null);
+    //assertTrue(dh1.save());
 
-    //Appt ap1 = new Appt(0,0,0,"","","");
-    //assertFalse(dh1.deleteAppt(ap1));
-    Appt ap2 = new Appt(1,1,1,"","","");
-    assertTrue(dh1.saveAppt(ap2));
-    assertTrue(ap2.getXmlElement()!=null);
+      //Appt ap1 = new Appt(0,0,0,"","","");
+      //assertFalse(dh1.deleteAppt(ap1));
+    //Appt ap2 = new Appt(1,1,1,"","","");
+    //assertTrue(dh1.saveAppt(ap2));
+    //assertTrue(ap2.getXmlElement()!=null);
 
-    //assertTrue();
-    //assertFalse(dh1.deleteAppt(ap2));
+      //assertTrue();
+      //assertFalse(dh1.deleteAppt(ap2));
   }
   @Test(timeout = 4000)
   public void test01()  throws Throwable  {

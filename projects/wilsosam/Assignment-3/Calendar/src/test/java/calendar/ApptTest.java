@@ -50,6 +50,14 @@ public class ApptTest  {
     Appt appt1 = new Appt(0,0,1,1,1,"Title","Desc","Email");
     appt1.setValid();
     assertTrue(appt1.getValid());
+    appt1.setStartMonth(12);
+    appt1.setStartHour(23);
+    appt1.setStartMinute(59);
+    appt1.setStartYear(2018);
+    appt1.setStartDay(31);
+    appt1.setValid();
+    assertTrue(appt1.getValid());
+    appt1.setStartDay(1);
     // Month
     appt1.setStartMonth(0);
     assertEquals(appt1.getStartMonth(), 0);
