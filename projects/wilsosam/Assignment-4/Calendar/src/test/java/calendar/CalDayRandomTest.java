@@ -20,7 +20,7 @@ public class CalDayRandomTest {
      * Generate Random Tests that tests CalDay Class.
      */
 	 @Test
-	  public void radnomtest()  throws Throwable  {
+	  public void randomtest()  throws Throwable  {
 		 long startTime = Calendar.getInstance().getTimeInMillis();
 		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
 		 CalDay cal = new CalDay(new GregorianCalendar(2,2,2));
