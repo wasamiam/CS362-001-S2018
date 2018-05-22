@@ -24,7 +24,7 @@ public class ApptRandomTest {
 	 * Return a randomly selected method to be tests !.
 	 */
     public static String RandomSelectMethod(Random random){
-        String[] methodArray = new String[] {"setTitle","setRecurrence"};// The list of the of methods to be tested in the Appt class
+        String[] methodArray = new String[] {"setTitle","setRecurrence","setValid","isOn"};// The list of the of methods to be tested in the Appt class
 
     	int n = random.nextInt(methodArray.length);// get a random number between 0 (inclusive) and  methodArray.length (exclusive)
     	            
@@ -66,11 +66,11 @@ public class ApptRandomTest {
 	//			System.out.println(" Seed:"+randomseed );
 				Random random = new Random(randomseed);
 				
-				 int startHour=ValuesGenerator.getRandomIntBetween(random, 1, 11);
-				 int startMinute=ValuesGenerator.getRandomIntBetween(random, 1, 11);
-				 int startDay=ValuesGenerator.getRandomIntBetween(random, 1, 11);
-				 int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 11);
-				 int startYear=ValuesGenerator.getRandomIntBetween(random, 2018, 2018);
+				 int startHour=ValuesGenerator.getRandomIntBetween(random, -5, 30);
+				 int startMinute=ValuesGenerator.getRandomIntBetween(random, -5, 70);
+				 int startDay=ValuesGenerator.getRandomIntBetween(random, -5, 35);
+				 int startMonth=ValuesGenerator.getRandomIntBetween(random, -5, 20);
+				 int startYear=ValuesGenerator.getRandomIntBetween(random, -1, 10);
 				 String title="Birthday Party";
 				 String description="This is my birthday party.";
 				 String emailAddress="xyz@gmail.com";
@@ -95,12 +95,24 @@ public class ApptRandomTest {
 						}
 					   else if (methodName.equals("setRecurrence")){
 						   int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
-						   int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
+						   int[] recurDays = ValuesGenerator.generateRandomArray(random, sizeArray);
+						   if(i == 0) {
+							   recurDays = null;
+						   }
 						   int recur=ApptRandomTest.RandomSelectRecur(random);
 						   int recurIncrement = ValuesGenerator.RandInt(random);
 						   int recurNumber=ApptRandomTest.RandomSelectRecurForEverNever(random);
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
-						}				
+						}
+						else if (methodName.equals("setValid")){
+					   		appt.setValid();
+					   }
+					   else if (methodName.equals("isOn")){
+						   int Day=ValuesGenerator.getRandomIntBetween(random, -5, 35);
+						   int Month=ValuesGenerator.getRandomIntBetween(random, -5, 20);
+						   int Year=ValuesGenerator.getRandomIntBetween(random, -1, 10);
+					   		appt.isOn(Day,Month,Year);
+					   }
 				}
 				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
